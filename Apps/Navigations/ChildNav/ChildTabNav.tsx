@@ -7,6 +7,7 @@ import ChildTaskScreen from "../../Screens/ChildScreens/ChildTaskScreen";
 import ChildHomeScreenNav from "./ChildHomeScreenNav";
 import ChildProfileNav from "./ChildProfileNav";
 import ChildSaveNav from "./ChildSaveNav";
+import ChildLearnNav from "./ChildLearnNav";
 
 const Tab = createBottomTabNavigator();
 
@@ -75,7 +76,7 @@ export default function ChildTabNav() {
       />
       <Tab.Screen
         name="learn"
-        component={ChildLearnScreen}
+        component={ChildLearnNav}
         options={{
           tabBarLabel: ({ color }) => (
             <Text style={{ color, fontSize: 12, marginBottom: 1 }}>

@@ -4,6 +4,7 @@ import tw from "twrnc"; // Tailwind CSS for styling
 import DateTimePicker from "@react-native-community/datetimepicker";
 import {CheckBox} from "react-native-elements";
 import GreetingHeader from "../../Components/GreetingHeader";
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const tasks = [
   {
@@ -96,7 +97,11 @@ const ChildTaskScreen = () => {
       <View style={tw`flex-row justify-between items-center mb-2`}>
         <Text style={tw`text-lg font-semibold`}>Task Dates</Text>
         <TouchableOpacity onPress={showDatepicker}>
-         <Image source={require('../../../assests/icons/calendar.png')} style={tw `w-[20px] h-[20px] bg-yellow-100`}/>
+        <AntDesign name="calendar" size={24} color="#FDD831"
+         style={tw ``}/>
+         {/* <Image 
+         source={require('../../../assests/icons/calendar.png')} 
+         style={tw `w-[20px] h-[20px] bg-yellow-100`}/> */}
         </TouchableOpacity>
       </View>
       <View style={tw`flex-row justify-between mb-4`}>
@@ -119,15 +124,17 @@ const ChildTaskScreen = () => {
           </View>
         ))}
       </View>
-      {showDatePicker && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={"date"}
-          is24Hour={true}
-          display="default"
-          onChange={onChangeDate}
-        />
+       {showDatePicker && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={"date"}
+            is24Hour={true}
+            display="default"
+            onChange={onChangeDate}
+            // style={tw`h-[200px]`}
+          />
+         
       )}
 
       {/* Task List */}
