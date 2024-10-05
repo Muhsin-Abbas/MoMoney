@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import tw from "../../tw"; 
 import { useNavigation } from "@react-navigation/native";
 
-const ChildSignInScreen = ({setUserType}) => {
+const ChildSignInScreen = () => {
   const navigation = useNavigation();
 
   const [fullName, setFullName] = useState("");
