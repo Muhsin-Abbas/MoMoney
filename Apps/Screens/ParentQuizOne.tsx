@@ -3,10 +3,12 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import tw from '../../tw';
 import { useNavigation } from '@react-navigation/native'; // Import navigation hook
 
-const QuizQuestion = () => {
+const ParentQuizOne = ({ route }) => {
+  const { progress: initialProgress } = route.params; // Get passed progress from previous screen
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [progress, setProgress] = useState(0);
-  const navigation = useNavigation(); // Initialize navigation
+  const [progress, setProgress] = useState(initialProgress); // Initialize progress with the passed value
+
+  const navigation = useNavigation(); // Hook for navigation
 
   const answers = [
     "To look nice in a wallet",
@@ -19,13 +21,13 @@ const QuizQuestion = () => {
   const correctAnswerIndex = 1; // Index of the correct answer
 
   const handleAnswerSelection = (index) => {
-    if (selectedAnswer === null) { // Only allow progress increase if no answer has been selected
+    if (selectedAnswer === null) {
       setSelectedAnswer(index);
-      const newProgress = Math.min(progress + 25, 100);
-      setProgress(newProgress);
+      const updatedProgress = Math.min(progress + 25, 100); // Increase progress by 25% or cap at 100
+      setProgress(updatedProgress);
 
-      // Navigate to ParentQuizOne and pass the progress as a parameter
-      navigation.navigate('ParentQuizOne', { progress: newProgress });
+      // Navigate to ParentQuizTwo and pass updated progress
+      navigation.navigate('ParentQuizTwo', { progress: updatedProgress });
     }
   };
 
@@ -73,4 +75,4 @@ const QuizQuestion = () => {
   );
 };
 
-export default QuizQuestion;
+export default ParentQuizOne;

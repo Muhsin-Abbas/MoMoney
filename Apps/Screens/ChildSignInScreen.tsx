@@ -45,7 +45,6 @@ const ChildSignInScreen = () => {
       <TouchableOpacity
         style={tw`bg-customBlue w-full h-[50px] justify-center rounded-lg mt-13 rounded-full`}
         onPress={() => {
-          // setUserType('child');
             navigation.navigate("Child_Home");
             console.log('hello')
         }}

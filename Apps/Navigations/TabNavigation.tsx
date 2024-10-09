@@ -3,11 +3,11 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ParentTaskScreen from "../Screens/ParentTaskScreen";
 import SaveScreen from "../Screens/SaveScreen";
-import LearnScreen from "../Screens/LearnScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import { Ionicons } from "@expo/vector-icons";
 import StackHomeScreen from "./HomeScreenNav";
 import ChildSaveNav from "../Navigations/ChildNav/ChildSaveNav";
+import ParentLearnNav from "./ParentLearnNav";
 
 const Tab = createBottomTabNavigator();
 export default function TabNavigation() {
@@ -74,7 +74,7 @@ export default function TabNavigation() {
       />
       <Tab.Screen
         name="learn"
-        component={LearnScreen}
+        component={ParentLearnNav}
         options={{
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontSize: 12, marginBottom: 1 }}>

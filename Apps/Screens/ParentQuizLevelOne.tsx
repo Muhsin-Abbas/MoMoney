@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import tw from '../../tw';
 import { useNavigation } from '@react-navigation/native'; // Import navigation hook
+import ParentQuizThree from './ParentQuizThree';
 
-const QuizQuestion = () => {
+const ParentQuizLevelOne = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [progress, setProgress] = useState(0);
   const navigation = useNavigation(); // Initialize navigation
@@ -73,4 +74,4 @@ const QuizQuestion = () => {
   );
 };
 
-export default QuizQuestion;
+export default ParentQuizLevelOne;

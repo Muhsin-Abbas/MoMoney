@@ -3,29 +3,33 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import tw from '../../tw';
 import { useNavigation } from '@react-navigation/native'; // Import navigation hook
 
-const QuizQuestion = () => {
+const ParentQuizThree = ({ route }) => {
+  const { progress: initialProgress } = route.params; // Get passed progress
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [progress, setProgress] = useState(0);
-  const navigation = useNavigation(); // Initialize navigation
+  const [progress, setProgress] = useState(initialProgress); // Initialize with passed progress
+
+  const navigation = useNavigation(); // Hook for navigation
 
   const answers = [
-    "To look nice in a wallet",
-    "To exchange for goods and services",
-    "To play with",
-    "To exchange for goods and services"
+    "Interest",
+    "Saving",
+    "Income",
+    "Debt"
   ];
 
   const answerColors = ['bg-blue-500', 'bg-teal-500', 'bg-yellow-500', 'bg-pink-500'];
   const correctAnswerIndex = 1; // Index of the correct answer
 
   const handleAnswerSelection = (index) => {
-    if (selectedAnswer === null) { // Only allow progress increase if no answer has been selected
+    if (selectedAnswer === null) {
       setSelectedAnswer(index);
-      const newProgress = Math.min(progress + 25, 100);
-      setProgress(newProgress);
+      setProgress(prevProgress => Math.min(prevProgress + 25, 100)); 
 
-      // Navigate to ParentQuizOne and pass the progress as a parameter
-      navigation.navigate('ParentQuizOne', { progress: newProgress });
+      // Navigate to Congrats after a short delay
+      setTimeout(() => {
+        console.log('Navigating to Congrats'); // Debug log
+        navigation.navigate('Congrats'); 
+      }, 300); // Adjust the timeout duration if needed
     }
   };
 
@@ -45,12 +49,12 @@ const QuizQuestion = () => {
 
       {/* Progress Bar */}
       <View style={tw`bg-gray-200 rounded-full h-2.5 mb-4`}>
-        <View style={[tw`bg-blue-600 h-2.5 rounded-full`, {width: `${progress}%`}]} />
+        <View style={[tw`bg-blue-600 h-2.5 rounded-full`, { width: `${progress}%` }]} />
       </View>
 
       {/* Question */}
-      <Text style={tw`text-2xl font-bold text-center mb-8`}>
-        What is the {'\n'} primary purpose of {'\n'}money?
+      <Text style={tw`text-32px font-500 text-center mb-8`}>
+        What is the term {'\n'} for the money you {'\n'} earn from{'\n'} Workig?
       </Text>
 
       {/* Answer options */}
@@ -73,4 +77,4 @@ const QuizQuestion = () => {
   );
 };
 
-export default QuizQuestion;
+export default ParentQuizThree;

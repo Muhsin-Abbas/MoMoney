@@ -98,13 +98,13 @@ export default function StackHomeScreen() {
           headerShown: false,
         }}
       />
-         <Stack.Screen
+         {/* <Stack.Screen
         name="QuizQuestion"
         component={QuizQuestion}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }
